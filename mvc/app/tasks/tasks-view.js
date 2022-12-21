@@ -5,14 +5,12 @@ export default class TaskView{
         this.DOM_TASK_TABLE.addEventListener('click', callback);
     }
 
-    render = d => {
+    render = (d, sortType, direction) => {
         const str = `
         <thead>
             <tr>
                 <th>#</th>
-                <th data-sort="when">When</th>
-                <th data-sort="name">Name</th>
-                <th data-sort="status">Status</th>
+                ${ this.renderHeaders(sortType, direction) }
                 <th>Description</th>
             </tr>
         </thead>
@@ -21,6 +19,18 @@ export default class TaskView{
         </tbody>`;
         this.DOM_TASK_TABLE.innerHTML = '';
         this.DOM_TASK_TABLE.insertAdjacentHTML('afterbegin', str);
+    }
+    
+    renderHeaders = (sortType, direction) => {
+        const headers = [
+            {key : 'when', description : 'When'},
+            {key : 'name', description : 'Name'},
+            {key : 'status', description : 'Status'}
+        ];
+
+        const dir = direction ? '▼' : '▲'; 
+
+        return headers.map(({key, description}) => `<th data-sort="${ key }">${ description }${ sortType == key ? dir : '' }</th>`).join('');
     }
 
     renderTaskRow = ({ when, name, status, description }, i) => {
