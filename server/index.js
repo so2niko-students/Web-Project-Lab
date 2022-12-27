@@ -22,6 +22,25 @@ const data = [
   },
 ];
 
+const statuses = [
+  {
+    key : 'idk',
+    value : 'Idk'
+  },
+  {
+    key : 'in_progress',
+    value : 'In progress'
+  },
+  {
+    key : 'not_started',
+    value : 'Not started'
+  },
+  {
+    key : 'done',
+    value : 'Done'
+  }
+];
+
 const http = require("http");
 var url = require('url');
 
@@ -29,7 +48,10 @@ http
   .createServer(function (req, res) {
     const { query, pathname } = url.parse(req.url, true);
 
+    let answer = data;
+
     if(pathname == '/add'){
+      answer = data;
         const task = {
             name : query.name,
             description : query.description,
@@ -37,15 +59,18 @@ http
             when : (new Date()).toISOString().slice(0, 10)
         };
 
-        data.push(task);
+        answer.push(task);
     }
 
+    if(pathname == '/statuses'){
+      answer = statuses;
+    }
 
     res.writeHead(200, { 
         "Content-Type": "text/html", 
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Headers": "X-Requested-With"
     });
-    res.end(JSON.stringify(data));
+    res.end(JSON.stringify(answer));
   })
   .listen(8080);

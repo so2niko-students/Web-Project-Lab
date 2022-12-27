@@ -1,13 +1,13 @@
 import FormTaskView from "./form-task-view.js";
+import Publisher from "../publisher.js";
 
 export default class FormTaskController{
-    constructor(handleCreateTask){
+    constructor(){
         this.view = new FormTaskView(this.handleSaveTask);
-        this.handleCreateTask = handleCreateTask;
     }
 
     handleSaveTask = _ => {
         const data = this.view.getInputsData();
-        this.handleCreateTask(data);
+        Publisher.notify('ON_CREATE_NEW_TASK', data);
     }   
 }
