@@ -20,6 +20,13 @@ const data = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam ut vitae maiores voluptatum facere officiis eveniet quam quasi, error, necessitatibus in ratione nesciunt, modi pariatur quaerat impedit consectetur aliquam obcaecati!",
   },
+  {
+    when: "2022-11-20",
+    name: "Something",
+    status: "Idk",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam ut vitae maiores voluptatum facere officiis eveniet quam quasi, error, necessitatibus in ratione nesciunt, modi pariatur quaerat impedit consectetur aliquam obcaecati!",
+  },
 ];
 
 const statuses = [

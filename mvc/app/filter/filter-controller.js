@@ -12,6 +12,7 @@ export default class FilterController{
 
     loadAndRenderStatuses = async () => {
         const statuses = await this.model.loadStatuses();
+        Publisher.notify('LOAD_STATUSES', statuses);
         this.view.render(statuses);
     }
 
