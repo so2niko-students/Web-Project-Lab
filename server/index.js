@@ -81,3 +81,7 @@ http
     res.end(JSON.stringify(answer));
   })
   .listen(8080);
+
+console.log('Server is working now');
+
+//TODO: add messenger package(integration)
