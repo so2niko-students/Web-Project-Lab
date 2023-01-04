@@ -37,7 +37,7 @@ aria-hidden="true"
     <div class="modal-footer">
       <button
         type="button"
-        class="btn btn-secondary"
+        class="btn btn-secondary btn-task-cancel"
         data-bs-dismiss="modal"
       >
         Cancel
@@ -45,7 +45,6 @@ aria-hidden="true"
       <button 
         type="button" 
         class="btn btn-primary btn-task-save"
-        data-bs-dismiss="modal"
         >
             Save Task
         </button>

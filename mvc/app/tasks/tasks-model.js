@@ -71,6 +71,23 @@ export default class TaskModel{
         return this.#sort();
     }
 
+    searchBy = searchVal => {
+        const search = searchVal.trim();
+
+        if(search != ''){
+            const regSearch = new RegExp(search, 'im');
+            //! Search functionality cancel filter functionality v.1
+            this.#filteredData = this.#data.filter(({name, description}) => {
+                const text = `${ name }${ description }`;
+                return regSearch.test(text);
+            });
+        }else{
+            this.#filteredData = [...this.#data];
+        }
+        
+        return this.#sort();
+    }
+
     set statuses(statuses){
         this.#statuses = statuses;
     }

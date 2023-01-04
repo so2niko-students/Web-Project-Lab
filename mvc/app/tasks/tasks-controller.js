@@ -11,6 +11,7 @@ export default class TaskController {
     Publisher.subscribe('ON_CREATE_NEW_TASK', this.handleCreateTask);
     Publisher.subscribe('FILTER_STATUS', this.handleFilterStatus);
     Publisher.subscribe('LOAD_STATUSES', this.handleLoadStatuses);
+    Publisher.subscribe('SEARCH', this.handleSearch);
   }
 
   handleLoadData = (d) => {
@@ -36,6 +37,12 @@ export default class TaskController {
   handleFilterStatus = status => {
     console.log('filter', status);
     const {data, sortType, direction} = this.model.filterBy(status);
+    this.view.render(data, sortType, direction);
+  }
+
+  handleSearch = searchVal => {
+    console.log('search', searchVal);
+    const {data, sortType, direction} = this.model.searchBy(searchVal);
     this.view.render(data, sortType, direction);
   }
 
